@@ -1,9 +1,4 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-# Sample workflow for building and deploying a Jekyll site to GitHub Pages
+# Build and deploy a doorstop site to GitHub Pages
 name: Deploy doorstop site to Pages
 
 on:
@@ -35,16 +30,15 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Python
         uses: actions/setup-python@v5
-          with:
-            python-version: '3.13'
-	    cache: 'pip'
-        run: pip install doorstop
+        with:
+          python-version: '3.13'
+          cache: 'pip'
+      - run: pip install doorstop
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
       - name: Build with doorstop
-        # Outputs to the './public' directory by default
-	run: doorstop publish all ./public 
+        run: doorstop publish all ./_site 
       - name: Upload artifact
         # Automatically uploads an artifact from the './_site' directory by default
         uses: actions/upload-pages-artifact@v3
