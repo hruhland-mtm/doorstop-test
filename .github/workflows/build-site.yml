@@ -33,7 +33,6 @@ jobs:
         with:
           python-version: '3.13'
           cache: 'pip'
-      - run: pip install doorstop
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
